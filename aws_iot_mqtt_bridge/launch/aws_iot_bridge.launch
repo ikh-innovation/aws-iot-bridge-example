@@ -5,6 +5,11 @@
   <node name="mqtt_bridge" pkg="mqtt_bridge" type="mqtt_bridge_node.py" output="screen">
     
     <rosparam command="load" file="$(find aws_iot_mqtt_bridge)/config/aws_iot_params.yaml" />
+    
+    <!-- Certifications /> -->
+    <param name="mqtt/tls/ca_certs" type="string" value="$(find aws_iot_mqtt_bridge)/config/certs/TrustServiceAmazonRootCA.pem" />
+    <param name="mqtt/tls/certfile" type="string" value="$(find aws_iot_mqtt_bridge)/config/certs/TESTGREAC01_DT03.crt" />
+    <param name="mqtt/tls/keyfile" type="string" value="$(find aws_iot_mqtt_bridge)/config/certs/TESTGREAC01_DT03.key" />
 
     <rosparam if="$(arg use_tls)" command="load" ns="mqtt" file="$(find aws_iot_mqtt_bridge)/config/tls_params.yaml" />
   </node>

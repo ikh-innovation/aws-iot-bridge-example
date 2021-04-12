@@ -22,11 +22,19 @@ deserializer: json:loads #msgpack:loads
 #Bridge params
 bridge:
   # Odometry bridge
+  # - factory: mqtt_bridge.bridge:RosToMqttBridge
+  #   msg_type: nav_msgs.msg:Odometry
+  #   topic_from: /aristos/aristos_base_control/odom
+  #   topic_to: mobile_robot/odometry
+  # - factory: mqtt_bridge.bridge:MqttToRosBridge
+  #   msg_type: nav_msgs.msg:Odometry
+  #   topic_from: mobile_robot/odometry
+  #   topic_to: /odometria
   - factory: mqtt_bridge.bridge:RosToMqttBridge
-    msg_type: nav_msgs.msg:Odometry
-    topic_from: /aristos/aristos_base_control/odom
-    topic_to: mobile_robot/odometry
+    msg_type: std_msgs.msg:String
+    topic_from: /test
+    topic_to: mobile_robot/test
   - factory: mqtt_bridge.bridge:MqttToRosBridge
-    msg_type: nav_msgs.msg:Odometry
-    topic_from: mobile_robot/odometry
-    topic_to: /odometria
+    msg_type: std_msgs.msg:String
+    topic_from: mobile_robot/test
+    topic_to: /test_translated
